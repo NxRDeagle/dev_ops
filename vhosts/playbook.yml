@@ -1,0 +1,16 @@
+---
+- name: Install nginx with virtual hosts
+  hosts: webservers
+  remote_user: vboxuser
+  become: true
+  become_method: sudo
+  gather_facts: no
+
+  vars:
+    sites:
+      - 'gmail.com'
+      - 'google.com'
+      - 'dzen.ru'
+
+  roles:
+    - nginx-vhosts
